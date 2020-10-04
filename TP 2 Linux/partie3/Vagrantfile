@@ -1,0 +1,35 @@
+Vagrant.configure("2")do|config|
+  config.vm.box="b2-tp2-centos"
+
+
+
+  config.vm.define "node1" do |node1|
+  node1.vm.hostname = "node1.tp2.b2"
+  node1.vm.network "private_network", ip: "192.168.2.21"
+  #Changement de la RAM
+  node1.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+  end
+  # Ajout d'un nom à la VM
+  node1.vm.provider :virtualbox do |vb|
+      vb.name = "node1"
+  end
+  end
+
+
+  config.vm.define "node2" do |node2|
+  node2.vm.hostname = "node2.tp2.b2"
+  node2.vm.network "private_network", ip: "192.168.2.22"
+  #Changement de la RAM
+  node2.vm.provider "virtualbox" do |v|
+    v.memory = 512
+  end
+  # Ajout d'un nom à la VM
+  node2.vm.provider :virtualbox do |vb|
+      vb.name = "node2"
+  end
+  end
+
+
+end
+
