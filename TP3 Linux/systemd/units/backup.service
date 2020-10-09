@@ -1,0 +1,14 @@
+[Unit]
+Description=Sauvegarde
+
+[Service]
+Type=simple
+PIDFile=/var/run/backup.pid
+RemainAfterExit=no
+ExecStartPre=/bin/scriptsave/backuppre.sh
+ExecStart=/bin/scriptsave/backup.sh
+ExecStopPost=/bin/scriptsave/backupstop.sh
+ExecReload=/bin/ kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

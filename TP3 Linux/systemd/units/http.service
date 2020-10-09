@@ -1,0 +1,13 @@
+[Unit]
+Description= Service WEB
+
+[Service]
+Type=simple
+Environment="PORT=8080"
+ExecStartPre=/bin/scriptweb/httppre.sh
+RemainAfterExit=no
+ExecStart=/usr/bin/python3 -m http.server ${PORT}
+ExecStopPost=/bin/scriptweb/httpstop.sh
+
+[Install]
+WantedBy=multi-user.target
